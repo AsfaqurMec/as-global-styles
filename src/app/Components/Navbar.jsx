@@ -11,9 +11,15 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
+import { FaFacebookSquare } from "react-icons/fa";
+import { FaSquareTwitter } from "react-icons/fa6";
+import { IoLogoYoutube } from "react-icons/io5";
+import { IoCall } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { FaChevronDown } from "react-icons/fa";
 
 // import { useUser } from "../../context/UserContext";
-import { useSession } from "next-auth/react";
+// import { useSession } from "next-auth/react";
 import axios from "axios";
 import { MdCall } from "react-icons/md";
 
@@ -26,7 +32,7 @@ const Navbar = () => {
       drawerRef.current.checked = false;
     }
   };
-  const  session  = useSession();
+//   const  session  = useSession();
  //console.log(session);
  
 //   const { user } = useUser(); // Access user data from context
@@ -47,75 +53,30 @@ const Navbar = () => {
     setToggle(false);
 }
 
-   const handle = () => {
-    setItems([]);
-    setSearch('');
-  }
-
-  const [latest, setLatest] = useState([]);
-     
-  const handleSearch = () => {
-    setText(search);
-}
-
-const handleDelete = () => {
-  setText();
-}
-
-// useEffect(() => {
-//   const getData = async () => {
-//     const { data } = await axios.get(
-//       ` `
-//     )
-    
-//     setLatest(data.service)
-//    // console.log(data);
-//    // console.log(latest);
-//   }
-//   getData();
-  
 
 
 
-// }, [latest, session?.data?.user?.email, user?.email])
-
-//console.log(latest);
-
-  useEffect(() => {
-    if (search) {
-      
-    
-    const fetchData = async () => {
-      try {
-        const { data } = await axios.get(` https://electro-brown.vercel.app/search/api?search=${text}`);
-        setItems(data);
-       // console.log('dataaaas :',items.service);
-        
-      } catch (error) {
-        console.error('Error fetching data:', error.message);
-      }
-      
-    };
-    fetchData();
-  } else {
-    setItems([]);
-  }
-
-  
-  
-  }, [items.service, text]);
-
-  const Smartphone = 'Smartphone';
-const Smartwatch = 'Smartwatch';
-const Earbuds = 'Earbuds';
-const Headphones = 'Headphones';
 
     return (
         <>
-        
-       {/* upper NAVBAR */}
+        {/* Upper Navbar */}
+
+         <div className="flex justify-around items-center py-2 bg-black text-white ">
+             <div className="hidden md:flex gap-10">
+                <h1 className="flex gap-2 items-center"><IoCall  className="text-xl" />+8801956230265</h1>
+                <h1 className="flex gap-2 items-center"><MdEmail className="text-xl" />asglobal@gmail.com</h1>
+             </div>
+             <div className="flex gap-5">
+                <h1><FaFacebookSquare className="text-2xl text-blue-700" /></h1>
+                <h1><FaSquareTwitter  className="text-2xl text-blue-300" /></h1>
+                <h1><IoLogoYoutube    className="text-2xl text-red-600" /></h1>
+             </div>
+         </div>
+
+
+       {/* lower NAVBAR */}
        <div className="sticky top-0 z-50 shadow-sm backdrop-blur-xl ">
-       <div  className="navbar shadow-sm bg-blue-100 px-1 md:px-2 flex w-full">
+       <div  className="navbar shadow-sm bg-amber-200 px-1 md:px-2 flex w-full">
                <div className="w-[30%] lg:w-[20%] ">
 
 <div className="flex justify-start gap-1 items-center">
@@ -178,6 +139,11 @@ const Headphones = 'Headphones';
           </Link>
 
         </ul>
+        <div className="flex gap-5 my-2">
+                <h1><FaFacebookSquare className="text-2xl text-blue-700" /></h1>
+                <h1><FaSquareTwitter  className="text-2xl text-blue-300" /></h1>
+                <h1><IoLogoYoutube    className="text-2xl text-red-600" /></h1>
+             </div>
       </div>
     </div>
 
@@ -195,7 +161,16 @@ const Headphones = 'Headphones';
                    <div className="flex w-full  items-center justify-center gap-8 text-lg font-semibold ml-16">
                 
                       <Link href={'/'}><h1>About Us</h1></Link>
-                      <Link href={'/products'}><h1>Products</h1></Link>
+                      <Link href={'/products'}>
+                        <div className="dropdown dropdown-hover ">
+  <div tabIndex={0} role="button" className="flex gap-2 items-center">Products <FaChevronDown className="mt-1"/></div>
+  <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2 shadow-sm">
+    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Men</li>
+    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Women</li>
+    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Kids</li>
+  </ul>
+</div>
+                      </Link>
                       <Link href={'/career'}><h1>Career</h1></Link>
                       <Link href={'/contact'}><h1>Contact Us</h1></Link>
                       <Link href={'/blog'}><h1>Blog</h1></Link>
@@ -214,7 +189,7 @@ const Headphones = 'Headphones';
                             
                                <div className="flex gap-1 md:gap-2.5">
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-black  "><Link href='/contact' className="text-[12px] md:text-[14px] hover:bg-blue-500 hover:text-white hover:font-semibold btn text-blue-500 border-2 border-blue-500">Get Service</Link></span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-white  "><Link href='/contact' className="text-[12px] md:text-[14px] text-white  bg-amber-600 hover:bg-amber-900  hover:font-semibold btn ">Get Service</Link></span> </h1>
                                
                                </div>
                             
