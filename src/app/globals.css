@@ -1,3 +1,26 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+ .banner1 {
+    background: url("../../public/b1.jpeg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+  }
+
+   .banner2 {
+    background: url("../../public/b2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+  }
+
+   .banner3 {
+    background: url("../../public/b3.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+  }
