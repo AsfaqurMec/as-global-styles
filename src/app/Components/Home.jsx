@@ -16,6 +16,7 @@ import { ImImages } from "react-icons/im";
 import { IoShirtOutline } from "react-icons/io5";
 import { GiPoloShirt } from "react-icons/gi";
 import { GiSewingMachine } from "react-icons/gi";
+import Parallex from './Parallex';
 
 
 const Home = () => {
@@ -247,6 +248,12 @@ const Home = () => {
      </div>
 
    </section>
+
+   {/* Contact Section */}
+
+      <section>
+         <Parallex></Parallex>
+      </section>
 
         </>
     );
