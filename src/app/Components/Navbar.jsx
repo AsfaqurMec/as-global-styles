@@ -91,9 +91,9 @@ const Navbar = () => {
       </div>
       <div className="drawer-side z-50 overflow-y-scroll">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu bg-[#000000] border-2 border-sky-200 text-base-content min-h-[150vh] w-80 pb-10 pt-2 px-5 z-50 space-y-0">
+        <ul className="menu bg-[#3e3e3e] border-2 border-amber-100 text-base-content min-h-[150vh] w-80 pb-10 pt-2 px-5 z-50 space-y-0">
           <li className="flex flex-row w-full justify-end mb-10">
-            <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay py-1 pl-[11px] w-9 rounded-full bg-[#08b0f8] hover:bg-[#061245] text-white text-xl font-bold">
+            <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay py-1 pl-[11px] w-9 rounded-full bg-[#ffffff] hover:bg-[#efdca2] text-black text-xl font-bold">
               X
             </label>
           </li>
@@ -138,12 +138,15 @@ const Navbar = () => {
             </div>
           </Link>
 
-        </ul>
-        <div className="flex gap-5 my-2">
-                <h1><FaFacebookSquare className="text-2xl text-blue-700" /></h1>
-                <h1><FaSquareTwitter  className="text-2xl text-blue-300" /></h1>
-                <h1><IoLogoYoutube    className="text-2xl text-red-600" /></h1>
+         <div className="flex gap-5 my-5">
+                <h1><FaFacebookSquare className="text-4xl text-blue-700" /></h1>
+                <h1><FaSquareTwitter  className="text-4xl text-blue-300" /></h1>
+                <h1><IoLogoYoutube    className="text-4xl text-red-600" /></h1>
              </div>
+
+
+        </ul>
+        
       </div>
     </div>
 

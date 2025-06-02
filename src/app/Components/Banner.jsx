@@ -9,7 +9,7 @@ import 'swiper/css/navigation';
 import { Autoplay} from 'swiper/modules';
 // import required modules
 import { Pagination } from 'swiper/modules';
-import { Navigation } from 'swiper/modules';
+// import { Navigation } from 'swiper/modules';
 import Link from 'next/link';
 
 
@@ -28,8 +28,8 @@ const Banner = () => {
         pagination={{
           dynamicBullets: true,
         }}
-        navigation={true}
-         modules={[Autoplay, Pagination, Navigation]} className="mySwiper w-full lg:w-[100%]">
+        // navigation={true}
+         modules={[Autoplay, Pagination]} className="mySwiper w-full lg:w-[100%]">
         <SwiperSlide className='rounded-sm w-full h-[40vh] md:h-[90vh] bg-cover bg-center bg-no-repeat banner1'>
            
             <div className='w-full gap-0 h-[40vh] md:h-[90vh] flex flex-row lg:flex-row justify-center items-center bg-[#000000a7]'>

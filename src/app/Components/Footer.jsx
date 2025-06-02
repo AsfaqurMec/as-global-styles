@@ -56,7 +56,7 @@ const Footer = () => {
 <footer className="w-full flex justify-center mx-auto bg-[#0c0a1b]  text-white py-5 px-5 border-t-[.5px] border-t-gray-600">
   
   
-  <p className='text-xl mb-0 '>Copyright © {new Date().getFullYear()} - by <strong className='text-[#edc234]'>AS Global Styles</strong>. All right reserved</p>
+  <p className='text-sm text-center md:text-xl mb-0 '>Copyright © {new Date().getFullYear()} - by <strong className='text-[#edc234]'>AS Global Styles</strong>. All right reserved</p>
    
  
   

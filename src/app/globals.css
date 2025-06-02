@@ -24,3 +24,11 @@
     background-position: center;
     
   }
+
+   .banner4 {
+    background: url("../../public/bac1.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    
+  }
