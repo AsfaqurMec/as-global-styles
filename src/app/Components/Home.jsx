@@ -42,7 +42,7 @@ const Home = () => {
         </div>
 
 
-        <section className='py-8 bg-gray-100'>
+        <section className='py-32 bg-gray-100'>
             <div className='w-full flex lg:flex-row items-center flex-col gap-8 lg:gap-3 px-2 lg:px-36'>
                 <div className='lg:w-1/2 w-full h-full'>
                   <Image src={b} alt='fe' className='rounded-md h-[420px]'></Image>
@@ -253,6 +253,39 @@ const Home = () => {
 
       <section>
          <Parallex></Parallex>
+      </section>
+
+      {/* Gallery Section */}
+
+      <section className='py-14 px-5 banner4'>
+
+        <h1 className='text-3xl md:text-8xl font-medium text-center py-16'>Gallery</h1>
+
+        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
+
+            <div>
+                <Image src={men} className='h-[350px]' alt='photo'></Image>
+            </div>
+            <div>
+                <Image src={women} className='h-[350px]' alt='photo'></Image>
+            </div>
+
+            <div>
+                <Image src={kid} className='h-[350px]' alt='photo'></Image>
+            </div>
+            <div>
+                <Image src={jacket} className='h-[350px]' alt='photo'></Image>
+            </div>
+            <div>
+                <Image src={hoodie} className='h-[350px]' alt='photo'></Image>
+            </div>
+            <div>
+                <Image src={denim} className='h-[350px]' alt='photo'></Image>
+            </div>
+            
+
+        </div>
+
       </section>
 
         </>
