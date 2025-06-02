@@ -18,10 +18,7 @@ import { IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
 
-// import { useUser } from "../../context/UserContext";
-// import { useSession } from "next-auth/react";
-import axios from "axios";
-import { MdCall } from "react-icons/md";
+
 
 const Navbar = () => {
 
@@ -32,10 +29,7 @@ const Navbar = () => {
       drawerRef.current.checked = false;
     }
   };
-//   const  session  = useSession();
- //console.log(session);
- 
-//   const { user } = useUser(); // Access user data from context
+
 
 
   const pathname = usePathname();
@@ -98,7 +92,7 @@ const Navbar = () => {
             </label>
           </li>
 
-          <Link href="/" onClick={closeDrawer}>
+          <Link href="/about-us" onClick={closeDrawer}>
             <div className=" shadow-none border-y-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className="text-xl font-medium py-3">
                 <h1>About Us</h1>
@@ -106,7 +100,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/courses" onClick={closeDrawer}>
+          <Link href="/products" onClick={closeDrawer}>
             <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className=" text-xl font-medium py-3">
                 <h1>Products</h1>
@@ -114,7 +108,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/instructor" onClick={closeDrawer}>
+          <Link href="/contact-us" onClick={closeDrawer}>
             <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className="text-xl font-medium py-3">
                 <h1>Contact Us</h1>
@@ -122,7 +116,7 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/instructor" onClick={closeDrawer}>
+          <Link href="/blog" onClick={closeDrawer}>
             <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className="text-xl font-medium py-3">
                 <h1>Blog</h1>
@@ -130,10 +124,10 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/instructor" onClick={closeDrawer}>
+          <Link href="/gallery" onClick={closeDrawer}>
             <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className="text-xl font-medium py-3">
-                <h1>Career</h1>
+                <h1>Gallery</h1>
               </div>
             </div>
           </Link>
@@ -163,8 +157,8 @@ const Navbar = () => {
                    <ul className="menu-horizontal px-1 text-sm font-normal w-full">
                    <div className="flex w-full  items-center justify-center gap-8 text-lg font-semibold ml-16">
                 
-                      <Link href={'/'}><h1>About Us</h1></Link>
-                      <Link href={'/products'}>
+                      <Link href={'/about-us'}><h1>About Us</h1></Link>
+                      <Link href={'/product'}>
                         <div className="dropdown dropdown-hover ">
   <div tabIndex={0} role="button" className="flex gap-2 items-center">Products <FaChevronDown className="mt-1"/></div>
   <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2 shadow-sm">
@@ -174,9 +168,10 @@ const Navbar = () => {
   </ul>
 </div>
                       </Link>
-                      <Link href={'/career'}><h1>Career</h1></Link>
-                      <Link href={'/contact'}><h1>Contact Us</h1></Link>
+                      
+                      <Link href={'/contact-us'}><h1>Contact Us</h1></Link>
                       <Link href={'/blog'}><h1>Blog</h1></Link>
+                      <Link href={'/gallery'}><h1>Gallery</h1></Link>
                 </div>
                    </ul>
                </div>
