@@ -39,7 +39,7 @@ const Banner = () => {
             <h1 className='text-left  text-white font-bold tracking-[.12em] text-2xl md:text-5xl'>With Our Quality.</h1>
             <div className='flex flex-col gap-3 md:flex-row'>
             
-            <Link href={'/enroll'}><button className='mt-5 btn text-white shadow-amber-800 border-none bg-amber-600 hover:bg-amber-900 px-4 md:px-8 text-sm md:text-xl w-28 md:w-44'>Get Service</button></Link>
+            <Link href={'/contact-us'}><button className='mt-5 btn text-white shadow-amber-800 border-none bg-amber-600 hover:bg-amber-900 px-4 md:px-8 text-sm md:text-xl w-28 md:w-44'>Get Service</button></Link>
             </div>
             </div>
 
@@ -56,7 +56,7 @@ const Banner = () => {
             <h1 className='text-left  text-white font-bold tracking-[.12em] text-2xl md:text-5xl'>– We Make It Happen.</h1>
             <div className='flex flex-col gap-3 md:flex-row'>
             
-            <Link href={'/enroll'}><button className='mt-5 btn text-white shadow-amber-800 border-none bg-amber-600 hover:bg-amber-900 px-4 md:px-8 text-sm md:text-xl w-28 md:w-44'>About Us</button></Link>
+            <Link href={'/about-us'}><button className='mt-5 btn text-white shadow-amber-800 border-none bg-amber-600 hover:bg-amber-900 px-4 md:px-8 text-sm md:text-xl w-28 md:w-44'>About Us</button></Link>
             </div>
             </div>
 
@@ -72,7 +72,7 @@ const Banner = () => {
             <h1 className='text-left  text-white font-bold tracking-[.12em] text-2xl md:text-5xl'>– Always On Time."</h1>
             <div className='flex flex-col gap-3 md:flex-row'>
             
-            <Link href={'/enroll'}><button className='mt-5 btn text-white shadow-amber-800 border-none bg-amber-600 hover:bg-amber-900 px-4 md:px-8 text-sm md:text-xl w-28 md:w-44'>Contact Us</button></Link>
+            <Link href={'/contact-us'}><button className='mt-5 btn text-white shadow-amber-800 border-none bg-amber-600 hover:bg-amber-900 px-4 md:px-8 text-sm md:text-xl w-28 md:w-44'>Contact Us</button></Link>
             </div>
             </div>
 

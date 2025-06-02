@@ -26,9 +26,9 @@ const Footer = () => {
   <nav className='space-y-3 flex flex-col pl-0 md:pl-20'>
     <h6 className="footer-title text-xl mb-3 text-[#edc234] opacity-100">Quick Links</h6>
     <Link href={'/'}><h2 className="link link-hover text-base font-semibold">About Us</h2></Link>
-    <Link href={'/'}><h2 className="link link-hover text-base font-semibold">Blog</h2></Link>
+    <Link href={'/services'}><h2 className="link link-hover text-base font-semibold">Services</h2></Link>
     <Link href={'/'}><h2 className="link link-hover text-base font-semibold">Contact Us</h2></Link>
-    <Link href={'/'}><h2 className="link link-hover text-base font-semibold">Career</h2></Link>
+    <Link href={'/gallery'}><h2 className="link link-hover text-base font-semibold">Gallery</h2></Link>
 
   </nav>
 

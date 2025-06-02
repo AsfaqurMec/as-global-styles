@@ -116,10 +116,10 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/blog" onClick={closeDrawer}>
+          <Link href="/services" onClick={closeDrawer}>
             <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className="text-xl font-medium py-3">
-                <h1>Blog</h1>
+                <h1>Services</h1>
               </div>
             </div>
           </Link>
@@ -170,7 +170,7 @@ const Navbar = () => {
                       </Link>
                       
                       <Link href={'/contact-us'}><h1>Contact Us</h1></Link>
-                      <Link href={'/blog'}><h1>Blog</h1></Link>
+                      <Link href={'/services'}><h1>Services</h1></Link>
                       <Link href={'/gallery'}><h1>Gallery</h1></Link>
                 </div>
                    </ul>
@@ -187,7 +187,7 @@ const Navbar = () => {
                             
                                <div className="flex gap-1 md:gap-2.5">
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-white  "><Link href='/contact' className="text-[12px] md:text-[14px] text-white  bg-amber-600 hover:bg-amber-900  hover:font-semibold btn ">Get Service</Link></span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-white  "><Link href='/contact-us' className="text-[12px] md:text-[14px] text-white  bg-amber-600 hover:bg-amber-900  hover:font-semibold btn ">Get Service</Link></span> </h1>
                                
                                </div>
                             
