@@ -18,7 +18,7 @@ const page = () => {
 
           <div className='flex flex-col md:flex-row md:items-center gap-5 px-5 pb-10'>
               <div className='w-full md:w-[70%] space-y-5'>
-                  <h1 className='text-6xl font-medium'>Sourcing</h1>
+                  <h1 className='text-4xl md:text-6xl font-medium'>Sourcing</h1>
                   <p className='text-lg font-extralight'>This involves locating the manufacturing units depending on the customer’s expectation in regard to quality, quantity, fashion and price. The source is commercially assessed in terms of financial status, bankers, and quota. It is also assessed technically in terms of machines, type of machinery, production capacity, quality control system, export performance, etc. These services can be further extended in locating reliable fabric sources, dyers and printers, which ultimately promotes quality of merchandise.</p>
               </div>
 
@@ -30,7 +30,7 @@ const page = () => {
 
         <div className='flex flex-col md:flex-row-reverse md:items-center gap-5 px-5 pb-10'>
               <div className='w-full md:w-[70%] space-y-5'>
-                  <h1 className='text-6xl font-medium'>Quality Control</h1>
+                  <h1 className='text-4xl md:text-6xl font-medium'>Quality Control</h1>
                   <p className='text-lg font-extralight'>Quality control mainly involves monitoring of quality from fabric to finished product stage in several steps as under:
 
 Testing of production fabric in all color ways and designs to verify the conformity to buyer’s quality specifications.
@@ -49,7 +49,7 @@ Final or pre-shipment inspection when the goods are ready for shipment. This is 
 
           <div className='flex flex-col md:flex-row md:items-center gap-5 px-5 pb-10'>
               <div className='w-full md:w-[70%] space-y-5'>
-                  <h1 className='text-6xl font-medium'>Merchandising</h1>
+                  <h1 className='text-4xl md:text-6xl font-medium'>Merchandising</h1>
                   <p className='text-lg font-extralight'>The services covered under this title are as under:
 
 Monitoring of the order from fabric procurement stage to shipment and reporting the status of the order to the buyers regularly. Systematic follow up on each stage and execution of orders on time.
@@ -70,7 +70,7 @@ Feedback on competitor’s activities.</p>
 
           <div className='flex flex-col md:flex-row-reverse md:items-center gap-5 px-5 pb-10'>
               <div className='w-full md:w-[70%] space-y-5'>
-                  <h1 className='text-6xl font-medium'>Shipping , Documentation and Forwarding</h1>
+                  <h1 className='text-4xl md:text-6xl font-medium'>Shipping , Documentation and Forwarding</h1>
                   <p className='text-lg font-extralight'>We have knowledge and expertise to provide total logistics and transportation solutions in Bangladesh. Working in close association with leading freight forwarders, air and shipping lines at various locations, we can provide you the following specific value added services</p>
               </div>
 
@@ -82,7 +82,7 @@ Feedback on competitor’s activities.</p>
 
           <div className='flex flex-col md:flex-row md:items-center gap-5 px-5 pb-10'>
               <div className='w-full md:w-[70%] space-y-5'>
-                  <h1 className='text-6xl font-medium'>Third Party Inspection Provider</h1>
+                  <h1 className='text-4xl md:text-6xl font-medium'>Third Party Inspection Provider</h1>
                   <p className='text-lg font-extralight'>We have a quality team for 3rd party inspection. If any of our clients don’t have any office or agent in Bangladesh, we can provide them orders follow up facilities with PP Meeting, Inline inspection, Final inspection support with a very low rate.</p>
               </div>
 

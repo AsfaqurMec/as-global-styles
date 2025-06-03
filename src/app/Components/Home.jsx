@@ -6,20 +6,31 @@ import Image from 'next/image';
 import b from '../../../public/b-5.png'
 import { VscPass } from "react-icons/vsc";
 import { ImLink } from "react-icons/im";
-import men from '../../../public/men.jpg'
-import women from '../../../public/women.jpeg'
+import mens from '../../../public/men.jpg'
+import womens from '../../../public/women.jpeg'
 import kid from '../../../public/kids.jpg'
-import denim from '../../../public/jeans-1_2048x.webp'
-import jacket from '../../../public/jacket.jpg'
-import hoodie from '../../../public/hoodie.jpeg'
+import denims from '../../../public/jeans-1_2048x.webp'
+import jackets from '../../../public/jacket.jpg'
+import hoodies from '../../../public/hoodie.jpeg'
 import { ImImages } from "react-icons/im";
 import { IoShirtOutline } from "react-icons/io5";
 import { GiPoloShirt } from "react-icons/gi";
 import { GiSewingMachine } from "react-icons/gi";
 import Parallex from './Parallex';
+import Link from 'next/link';
 
 
 const Home = () => {
+
+     const men = 'men';
+     const women = 'women';
+     const hoodie = 'hoodie';
+     const denim = 'denim';
+     const jacket = 'jacket';
+     const kids = 'kids';
+
+
+
     return (
         <>
         <div className='grid grid-cols-1 md:grid-cols-3 gap-5 px-5 md:px-20 py-10'>
@@ -79,16 +90,20 @@ const Home = () => {
         <section className='banner4'>
            <h1 className='text-5xl md:text-6xl text-center font-medium pt-10'>Our Products</h1>
           <div className='grid grid-cols-2 md:grid-cols-3 gap-3 px-5 md:px-20 py-10'>
-
-            <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative overflow-hidden">
+            
+            <Link href={`/product-category/${men}`}>
+            <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
+                
                 <Image
-                  src={men}
+                  src={mens}
                   alt=""
                   width={1000}
                   height={1000}
                   className="w-full h-full"
                   priority
                 />
+                <h1 className=' text-center text-lg md:text-2xl mt-1 font-medium'>Men Products</h1>
+                
                 <div className="absolute inset-0 bg-[#cb9658ea] bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <span className="text-white text-lg font-semibold">
                     <ImLink className='text-5xl p-1 bg-amber-800 text-white rounded-full'/>
@@ -96,16 +111,19 @@ const Home = () => {
                   <h1 className='mt-8 text-white text-2xl'>Men Products</h1>
                 </div>
               </div>
+          </Link>
 
-               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative overflow-hidden">
+          <Link href={`/product-category/${women}`}>
+               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 <Image
-                  src={women}
+                  src={womens}
                   alt=""
                   width={1000}
                   height={1000}
                   className="w-full h-full"
                   priority
                 />
+                <h1 className=' text-center text-lg md:text-2xl mt-1 font-medium'>Women Products</h1>
                 <div className="absolute inset-0 bg-[#cb9658ea] bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <span className="text-white text-lg font-semibold">
                     <ImLink className='text-5xl p-1 bg-amber-800 text-white rounded-full'/>
@@ -113,8 +131,10 @@ const Home = () => {
                   <h1 className='mt-8 text-white text-2xl'>Women Products</h1>
                 </div>
               </div>
+          </Link>
 
-               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative overflow-hidden">
+          <Link href={`/product-category/${kids}`}>
+               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 <Image
                   src={kid}
                   alt=""
@@ -123,6 +143,7 @@ const Home = () => {
                   className="w-full h-full"
                   priority
                 />
+                <h1 className=' text-center text-lg md:text-2xl mt-1 font-medium'>Kids Products</h1>
                 <div className="absolute inset-0 bg-[#cb9658ea] bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <span className="text-white text-lg font-semibold">
                     <ImLink className='text-5xl p-1 bg-amber-800 text-white rounded-full'/>
@@ -130,16 +151,19 @@ const Home = () => {
                   <h1 className='mt-8 text-white text-2xl'>Kids Products</h1>
                 </div>
               </div>
+            </Link>
 
-               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative overflow-hidden">
+          <Link href={`/product-category/${denim}`}>
+               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 <Image
-                  src={denim}
+                  src={denims}
                   alt=""
                   width={1000}
                   height={1000}
                   className="w-full h-full"
                   priority
                 />
+                <h1 className=' text-center text-lg md:text-2xl mt-1 font-medium'>Denim Collection</h1>
                 <div className="absolute inset-0 bg-[#cb9658ea] bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <span className="text-white text-lg font-semibold">
                     <ImLink className='text-5xl p-1 bg-amber-800 text-white rounded-full'/>
@@ -147,16 +171,19 @@ const Home = () => {
                   <h1 className='mt-8 text-white text-2xl'>Denim Collection</h1>
                 </div>
               </div>
+             </Link>
 
-               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative overflow-hidden">
+          <Link href={`/product-category/${jacket}`}>
+               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 <Image
-                  src={jacket}
+                  src={jackets}
                   alt=""
                   width={1000}
                   height={1000}
                   className="w-full h-full"
                   priority
                 />
+                <h1 className=' text-center text-lg md:text-2xl mt-1 font-medium'>Jackets</h1>
                 <div className="absolute inset-0 bg-[#cb9658ea] bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <span className="text-white text-lg font-semibold">
                     <ImLink className='text-5xl p-1 bg-amber-800 text-white rounded-full'/>
@@ -164,16 +191,19 @@ const Home = () => {
                   <h1 className='mt-8 text-white text-2xl'>Jackets</h1>
                 </div>
               </div>
+           </Link>
 
-               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative overflow-hidden">
+          <Link href={`/product-category/${hoodie}`}>
+               <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 <Image
-                  src={hoodie}
+                  src={hoodies}
                   alt=""
                   width={1000}
                   height={1000}
                   className="w-full h-full"
                   priority
                 />
+                <h1 className=' text-center text-lg md:text-2xl mt-1 font-medium'>Hoodies</h1>
                 <div className="absolute inset-0 bg-[#cb9658ea] bg-opacity-50 flex flex-col items-center justify-center opacity-0 hover:opacity-100 transition-opacity duration-300">
                   <span className="text-white text-lg font-semibold">
                     <ImLink className='text-5xl p-1 bg-amber-800 text-white rounded-full'/>
@@ -181,6 +211,8 @@ const Home = () => {
                   <h1 className='mt-8 text-white text-2xl'>Hoodies</h1>
                 </div>
               </div>
+              </Link>
+
           </div>
 
 
@@ -264,23 +296,23 @@ const Home = () => {
         <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
 
             <div>
-                <Image src={men} className='h-[350px]' alt='photo'></Image>
+                <Image src={mens}  className='h-[350px]' alt='photo'></Image>
             </div>
             <div>
-                <Image src={women} className='h-[350px]' alt='photo'></Image>
+                <Image src={womens}  className='h-[350px]' alt='photo'></Image>
             </div>
 
             <div>
-                <Image src={kid} className='h-[350px]' alt='photo'></Image>
+                <Image src={kid}  className='h-[350px]' alt='photo'></Image>
             </div>
             <div>
-                <Image src={jacket} className='h-[350px]' alt='photo'></Image>
+                <Image src={jackets} className='h-[350px]' alt='photo'></Image>
             </div>
             <div>
-                <Image src={hoodie} className='h-[350px]' alt='photo'></Image>
+                <Image src={hoodies} className='h-[350px]' alt='photo'></Image>
             </div>
             <div>
-                <Image src={denim} className='h-[350px]' alt='photo'></Image>
+                <Image src={denims} className='h-[350px]' alt='photo'></Image>
             </div>
             
 
