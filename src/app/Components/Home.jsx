@@ -1,4 +1,5 @@
-import React from 'react';
+"use client"
+import React, { useEffect } from 'react';
 import { GiRolledCloth } from "react-icons/gi";
 import { RiShirtLine } from "react-icons/ri";
 import { BsShop } from "react-icons/bs";
@@ -18,9 +19,14 @@ import { GiPoloShirt } from "react-icons/gi";
 import { GiSewingMachine } from "react-icons/gi";
 import Parallex from './Parallex';
 import Link from 'next/link';
-
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import AOS from 'aos';
 
 const Home = () => {
+
+   useEffect(() => {
+      AOS.init({});
+  }, [])
 
      const men = 'men';
      const women = 'women';
