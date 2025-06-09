@@ -5,7 +5,7 @@ export const POST = async (request) => {
   const newCart = await request.json();
   try {
     const db = await connectDB();
-    const classCollection = db.collection("classes");
+    const classCollection = db.collection("category");
     
     const resp = await classCollection.insertOne({...newCart});
  
