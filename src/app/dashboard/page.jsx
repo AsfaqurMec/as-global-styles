@@ -1,5 +1,5 @@
 'use client'
-import Layout from "@/Components/Layout";
+import Layout from "../Components/Layout";
 
 
 

@@ -9,7 +9,7 @@ const Sidebar = () => {
           <Link href="/dashboard">Home</Link>
         </li>
         <li className="p-4 hover:bg-gray-700">
-          <Link href="/dashboard/category">Add Category</Link>
+          <Link href="/dashboard/addCategory">Add Category</Link>
         </li>
         <li className="p-4 hover:bg-gray-700">
           <Link href="/dashboard/addProduct">Add Item</Link>

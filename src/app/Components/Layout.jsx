@@ -1,5 +1,5 @@
 'use client'
-import withAuth from '../../middleware/withAuth';
+import withAuth from '../../../middleware/withAuth';
 //import withAuth from '../../middleware/withAuth';
 import Sidebar from './Sidebar';
 

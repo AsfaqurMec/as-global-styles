@@ -1,5 +1,5 @@
 'use client';
-import Layout from '@/Components/Layout';
+import Layout from '../../Components/Layout';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { CldUploadWidget } from "next-cloudinary";

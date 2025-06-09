@@ -36,3 +36,11 @@
   .bb {
   background-image: url("../../public/b3.jpg");
 }
+
+.logo {
+    background: url("../../public/logo.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position:center;
+    
+  }
