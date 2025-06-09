@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { signOut } from "next-auth/react";
 
 const Sidebar = () => {
   return (
@@ -21,12 +22,12 @@ const Sidebar = () => {
         {/* <li className="p-4 hover:bg-gray-700">
           <Link href="/dashboard/addExam">Add Exams</Link>
         </li> */}
-        {/* <li className="p-4 hover:bg-gray-700">
-          <Link href="/dashboard/orders">Orders</Link>
-        </li> */}
-        
+        <li className="p-4 hover:bg-gray-700">
+          <Link href="/dashboard/products">Products</Link>
+        </li>
+         <div onClick={() => signOut({ callbackUrl: "/" })} className="cursor-pointer p-4 text-center bg-gray-900">Logout</div>
       </ul>
-      {/* <div className="p-4 text-center bg-gray-900">Logout</div> */}
+     
     </div>
   );
 };

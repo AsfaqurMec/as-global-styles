@@ -1,8 +1,10 @@
+
 'use client';
-import Layout from '../../Components/Layout';
+import Layout from '@/Components/Layout';
 import React, { useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { CldUploadWidget } from "next-cloudinary";
+import Image from 'next/image';
 
 
 const page = () => {
@@ -11,8 +13,9 @@ const page = () => {
 const [imageUrl1, setImageUrl1] = useState('');
   const [product, setProduct] = useState({
     title: "",
-    subject: "",
-    video: "",
+    topic: "",
+    link: "",
+    image:"",
     
   });
 
@@ -46,47 +49,18 @@ const handleUploadComplete = (result) => {
   if (result?.event === 'success') {
     const uploadedUrl = result.info.secure_url;
 
-    setProduct((prev) => {
-      // Check if the first slot is empty
-      if (!prev.video) {
-        toast.success('Image 1 uploaded successfully!');
-        return { ...prev, video: uploadedUrl }; // Update image1
-      }
-      // Check if the second slot is empty
-    
-    });
-  } else {
-    toast.error('Image upload failed or canceled.');
-  }
+    setProduct({ ...product, image: uploadedUrl})
+ 
+} else {
+  toast.error('fail to upload');
 };
-
-  const handleAddRam = () => {
-    if (ramInput.trim()) {
-      setProduct({ ...product, ram: [...product.ram, ramInput] });
-      setRamInput("");
-    }
-  };
-
-  const handleAddRom = () => {
-    if (romInput.trim()) {
-      setProduct({ ...product, rom: [...product.rom, romInput] });
-      setRomInput("");
-    }
-  };
-
-  const handleAddColor = () => {
-    if (colorInput.trim()) {
-      setProduct({ ...product, colors: [...product.colors, colorInput] });
-      setColorInput("");
-    }
-  };
-
+}
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+   
    // console.log("Product Details:", product);
 
-    const resp = await fetch('/dashboard/addProduct/api', {
+    const resp = await fetch('/dashboard/addExam/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -95,7 +69,9 @@ const handleUploadComplete = (result) => {
     });
 
     if (resp.status === 200) {
-      toast.success("Class Added Successfully");
+      toast.success("Exam Added Successfully");
+      setProduct({ ...product, title:'', topic:'' , link:'', image:'' })
+      e.preventDefault();
     } else {
       toast.error("Something went Wrong");
     }
@@ -103,10 +79,40 @@ const handleUploadComplete = (result) => {
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-center mb-20">Add New Class</h1>
+      <h1 className="text-2xl font-bold text-center mb-20">Add New Exam</h1>
       <form onSubmit={handleSubmit} action="" className="space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
+        
+      <div>
+          <label htmlFor="image" className="block font-medium">Upload Image</label>
+          <CldUploadWidget 
+       cloudName={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dzmglrehf"}
+      uploadPreset="electro"
+      onSuccess={(result) => handleUploadComplete(result)}
+      onWidgetOpen={handleDebug}
+      >
+  {({ open }) => {
+    return (
+      <button  type="button" className='btn bg-blue-500 rounded-md text-white' onClick={() => open()}>
+        Upload Image
+      </button>
+    );
+  }}
+</CldUploadWidget>
+ 
+ <div className='flex justify-start items-center gap-10'>        
+{product.image && (
+  <div className="flex gap-3 flex-col">
+    <h2>Uploaded Image:</h2>
+    <Image src={product.image} alt='image' width={60} height={40}>
+    </Image>
+  </div>
+)} 
+
+</div>
+        </div>
+        
         <div>
-          <label htmlFor="title" className="block font-medium">Class Title</label>
+          <label htmlFor="title" className="block font-medium">Exam Title</label>
           <input
             type="text"
             id="title"
@@ -117,75 +123,35 @@ const handleUploadComplete = (result) => {
         </div>
 
         <div>
-          <label htmlFor="class" className="block font-medium">Class Link</label>
+          <label htmlFor="class" className="block font-medium">Exam Link</label>
           <input
             type="text"
             id="class"
-            value={product.video}
-            onChange={(e) => setProduct({ ...product, video: e.target.value })}
+            value={product.link}
+            onChange={(e) => setProduct({ ...product, link: e.target.value })}
             className="w-full border rounded p-2"
           />
         </div>
 
 
         <div>
-          <label htmlFor="title" className="block font-medium">Class Subject</label>
-          {/* <input
+          <label htmlFor="title" className="block font-medium">Exam Topic</label>
+          <input
             type="text"
             id="subject"
-            value={product.subject}
-            onChange={(e) => setProduct({ ...product, subject: e.target.value })}
+            value={product.topic}
+            onChange={(e) => setProduct({ ...product, topic: e.target.value })}
             className="w-full border rounded p-2"
-          /> */}
-          <select
-          value={product.subject}
-          onChange={(e) => setProduct({ ...product, subject: e.target.value })}
-          className="w-full p-2 border rounded"
-        >  
-          <option>Enter Subject</option>
-          <option value={'Physics'}>Physics</option>
-         
-          <option value={'English'}>English</option>
-          <option value={'Chemistry'}>Chemistry</option>
-          <option value={'HigherMath'}>Higher Math</option>
-        </select>
+          />
         </div>
 
-        {/* <div>
-          <label htmlFor="image" className="block font-medium">Upload Video</label>
-          <CldUploadWidget 
-       cloudName={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dzmglrehf"}
-      uploadPreset="electro"
-      onSuccess={(result) => handleUploadComplete(result)}
-      onWidgetOpen={handleDebug}
-      >
-  {({ open }) => {
-    return (
-      <button  type="button" className='btn bg-blue-500 rounded-md text-white' onClick={() => open()}>
-        Upload Class
-      </button>
-    );
-  }}
-</CldUploadWidget>
- 
- <div className='flex justify-start items-center gap-10'>        
-{product.video && (
-  <div className="flex gap-3 flex-col">
-    <h2>Uploaded Video:</h2>
-    <video src={product.video}  style={{ width: '500px', height:"300px" }} controls controlsList="nodownload">
-       <source src={product.video} type="video/mp4"/>
-    </video>
-  </div>
-)}
-
-</div>
-        </div> */}
+         
 
         <button 
           type="submit"
           className="btn bg-teal-500 text-white px-6 py-2 rounded w-full"
         >
-          Submit Class
+          Submit Exam
         </button>
       </form>
       <Toaster />

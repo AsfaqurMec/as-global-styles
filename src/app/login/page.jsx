@@ -22,7 +22,7 @@ const Page = () => {
       email,
       password,
       redirect: true,
-      callbackUrl: "/",
+      callbackUrl: "/dashboard",
     });
    // console.log(resp);
     
