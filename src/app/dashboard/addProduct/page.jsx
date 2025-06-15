@@ -14,7 +14,7 @@ const page = () => {
   useEffect(() => {
         const getData = async () => {
           const { data } = await axios.get(
-            'http://localhost:3000/allProducts'
+            'http://localhost:3000/allCategory'
           )
           // console.log('datas',data);
           setCategory(data.service)
@@ -26,7 +26,7 @@ const page = () => {
   
       }, []);
 
-      console.log('categories',category);
+     // console.log('categories',category);
       
 
   const [imageUrl, setImageUrl] = useState('');

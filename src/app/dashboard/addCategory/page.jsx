@@ -1,13 +1,32 @@
 'use client';
 import Layout from '../../Components/Layout';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { CldUploadWidget } from "next-cloudinary";
 import Image from 'next/image';
+import axios from 'axios';
 
 
 
 const page = () => {
+
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+        const getData = async () => {
+          const { data } = await axios.get(
+            'http://localhost:3000/allCategory'
+          )
+          // console.log('datas',data);
+          setCategory(data.service)
+          
+          
+         
+        }
+        getData();
+  
+      }, []);
+
 
   const [imageUrl, setImageUrl] = useState('');
 const [imageUrl1, setImageUrl1] = useState('');
@@ -56,7 +75,7 @@ const [imageUrl1, setImageUrl1] = useState('');
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-center mb-20">Add New Category</h1>
+      <h1 className="text-2xl font-bold text-center mb-10">Add New Category</h1>
       <form onSubmit={handleSubmit} action="" className="space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
         
         <div>
@@ -120,6 +139,64 @@ const [imageUrl1, setImageUrl1] = useState('');
           Submit Class
         </button>
       </form>
+
+ <>
+<h1 className="text-center text-green-700 text-3xl font-semibold mt-10 mb-6">All Category</h1>
+<div className="overflow-x-auto min-h-[46vh]">
+    <table className="table rounded-none bg-[#e6e6e6c1]">
+        {/* head */}
+        <thead>
+            <tr>
+            <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Sl No.</th>
+                <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Category avator</th>
+                <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Category Title</th>
+                <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Category Name</th>
+                
+                <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Action</th>
+               
+            </tr>
+      
+      </thead>
+
+        <tbody>
+            {
+             category.map((user, index )=> 
+                <tr key={user?._id}>
+                <td className="px-[5px] md:px-2 font-bold text-lg">{index+1}</td>
+                <td className="px-[5px] md:px-2 font-bold text-lg"><img className="w-12 h-12" src={user?.image} alt="" /></td>
+                <td className="px-[5px] md:px-2 font-bold text-lg">{user?.title}</td>
+                <td className="px-[5px] md:px-2 font-bold text-lg">{user?.name}</td>
+                
+                
+                
+                <td className="flex  gap-1 flex-row">
+                
+                 
+                 { user?.role === 'admin' ? "" :  
+                   <button onClick={()=>handleBlock(user?.id)}
+                        className="btn md:mr-2 btn-error">Edit</button>
+                }
+                  
+
+                 { user?.role === 'admin' ? "" : 
+                      <button onClick={()=>handleDelete(user?._id)}
+                      className="btn md:mr-2 btn-info">Delete</button>
+                 }
+              
+
+                </td>
+
+            </tr>
+              )
+          }
+        </tbody>  
+    </table>
+
+    <h1 className='my-3 text-2xl font-semibold'>Total : {category?.length}</h1>
+</div>
+</>
+
+
       <Toaster />
     </Layout>
   );

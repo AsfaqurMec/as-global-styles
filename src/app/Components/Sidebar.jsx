@@ -22,9 +22,9 @@ const Sidebar = () => {
         {/* <li className="p-4 hover:bg-gray-700">
           <Link href="/dashboard/addExam">Add Exams</Link>
         </li> */}
-        <li className="p-4 hover:bg-gray-700">
+        {/* <li className="p-4 hover:bg-gray-700">
           <Link href="/dashboard/products">Products</Link>
-        </li>
+        </li> */}
          <div onClick={() => signOut({ callbackUrl: "/" })} className="cursor-pointer p-4 text-center bg-gray-900">Logout</div>
       </ul>
      

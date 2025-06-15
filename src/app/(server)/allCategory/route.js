@@ -1,9 +1,9 @@
-import { connectDB } from "../../../lib/connectDB";
+import { connectDB } from "../../../../lib/connectDB";
 import { NextResponse } from "next/server";
 
 export const GET = async () => {
     const db = await connectDB();
-    const buyCollection = db.collection('products');
+    const buyCollection = db.collection('category');
     
     try {
         const service = await buyCollection.find().toArray();
