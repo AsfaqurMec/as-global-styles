@@ -55,7 +55,7 @@ const handleUploadComplete = (result) => {
 }
 
   const handleSubmit = async (e) => {
-   
+   e.preventDefault();
    // console.log("Product Details:", product);
 
     const resp = await fetch('/dashboard/addProduct/api', {
@@ -67,9 +67,9 @@ const handleUploadComplete = (result) => {
     });
 
     if (resp.status === 200) {
-      toast.success("Exam Added Successfully");
+      toast.success("Item Added Successfully");
       setProduct({ ...product, title:'', category:'', image:'' })
-      e.preventDefault();
+      
     } else {
       toast.error("Something went Wrong");
     }
