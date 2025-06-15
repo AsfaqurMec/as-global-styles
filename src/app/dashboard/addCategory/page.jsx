@@ -12,21 +12,29 @@ const page = () => {
 
   const [category, setCategory] = useState([]);
 
-  useEffect(() => {
-        const getData = async () => {
-          const { data } = await axios.get(
-            'http://localhost:3000/allCategory'
-          )
-          // console.log('datas',data);
-          setCategory(data.service)
-          
-          
+   useEffect(() => {
+  //       const getData = async () => {
+  //         const { data } = await axios.get(
+  //           'http://localhost:3000/allCategory'
+  //         )
+  //         // console.log('datas',data);
+  //         setCategory(data.service)
          
-        }
-        getData();
+  //       }
+        fetchData();
   
       }, []);
 
+const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/allCategory");
+      if (response.data) {
+        setCategory(response.data.service);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
 
   const [imageUrl, setImageUrl] = useState('');
 const [imageUrl1, setImageUrl1] = useState('');
@@ -72,6 +80,34 @@ const [imageUrl1, setImageUrl1] = useState('');
       toast.error("Something went Wrong");
     }
   };
+
+  const handleDelete = async (id)=> {
+
+           // const status = 'block';
+          
+          try {
+            const collection = 'category';
+            const response = await fetch("/delete/", {
+              method: "POST",
+              body: JSON.stringify({
+                 id, collection
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+        
+            if (response.ok) {
+              toast.success("Category deleted successfully!");
+              await fetchData();
+            } else {
+              alert("Failed to delete user.");
+            }
+          } catch (error) {
+            console.error("Error updating user status:", error);
+          }
+      
+          }
 
   return (
     <Layout>
@@ -174,13 +210,13 @@ const [imageUrl1, setImageUrl1] = useState('');
                  
                  { user?.role === 'admin' ? "" :  
                    <button onClick={()=>handleBlock(user?.id)}
-                        className="btn md:mr-2 btn-error">Edit</button>
+                        className="btn md:mr-2 btn-info">Edit</button>
                 }
                   
 
                  { user?.role === 'admin' ? "" : 
                       <button onClick={()=>handleDelete(user?._id)}
-                      className="btn md:mr-2 btn-info">Delete</button>
+                      className="btn md:mr-2 btn-error">Delete</button>
                  }
               
 
