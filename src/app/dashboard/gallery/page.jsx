@@ -1,20 +1,38 @@
-
 'use client';
-import Layout from '@/Components/Layout';
-import React, { useState } from 'react';
+import Layout from '../../Components/Layout';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { CldUploadWidget } from "next-cloudinary";
 import Image from 'next/image';
+import axios from 'axios';
 
 
 const page = () => {
 
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+        const getData = async () => {
+          const { data } = await axios.get(
+            'http://localhost:3000/allProducts'
+          )
+          // console.log('datas',data);
+          setCategory(data.service)
+          
+          
+         
+        }
+        getData();
+  
+      }, []);
+
+      console.log('categories',category);
+      
+
   const [imageUrl, setImageUrl] = useState('');
 const [imageUrl1, setImageUrl1] = useState('');
   const [product, setProduct] = useState({
-    title: "",
-    topic: "",
-    link: "",
+    
     image:"",
     
   });
@@ -23,27 +41,6 @@ const [imageUrl1, setImageUrl1] = useState('');
   const handleDebug = () => {
     console.log('Widget opened');
   };
-
-
-// const handleUploadComplete = (result) => {
-//   if (result?.event === 'success') {
-//     const uploadedUrl = result.info.secure_url;
-
-//     if (!product.image1) {
-//       setImageUrl(uploadedUrl);
-//       setProduct((prev) => ({ ...prev, image1: uploadedUrl }));
-//       toast.success('Image 1 uploaded successfully!');
-//     } else if (!product.image2) {
-//       setImageUrl1(uploadedUrl);
-//       setProduct((prev) => ({ ...prev, image2: uploadedUrl }));
-//       toast.success('Image 2 uploaded successfully!');
-//     } else {
-//       toast.error('Both image slots are already filled!');
-//     }
-//   } else {
-//     toast.error('Image upload failed or canceled.');
-//   }
-// };
 
 const handleUploadComplete = (result) => {
   if (result?.event === 'success') {
@@ -57,10 +54,10 @@ const handleUploadComplete = (result) => {
 }
 
   const handleSubmit = async (e) => {
-   
+   e.preventDefault();
    // console.log("Product Details:", product);
 
-    const resp = await fetch('/dashboard/addExam/api', {
+    const resp = await fetch('/dashboard/gallery/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,9 +66,9 @@ const handleUploadComplete = (result) => {
     });
 
     if (resp.status === 200) {
-      toast.success("Exam Added Successfully");
-      setProduct({ ...product, title:'', topic:'' , link:'', image:'' })
-      e.preventDefault();
+      toast.success("Gallery Added Successfully");
+      setProduct({ ...product, image:'' })
+      
     } else {
       toast.error("Something went Wrong");
     }
@@ -79,11 +76,11 @@ const handleUploadComplete = (result) => {
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-center mb-20">Add New Exam</h1>
+      <h1 className="text-2xl font-bold text-center mb-20">Add New Gallery</h1>
       <form onSubmit={handleSubmit} action="" className="space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
         
       <div>
-          <label htmlFor="image" className="block font-medium">Upload Image</label>
+          <label htmlFor="image" className="block font-medium">Upload Gallery Image</label>
           <CldUploadWidget 
        cloudName={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dzmglrehf"}
       uploadPreset="electro"
@@ -111,8 +108,8 @@ const handleUploadComplete = (result) => {
 </div>
         </div>
         
-        <div>
-          <label htmlFor="title" className="block font-medium">Exam Title</label>
+        {/* <div>
+          <label htmlFor="title" className="block font-medium">Product Title</label>
           <input
             type="text"
             id="title"
@@ -120,38 +117,33 @@ const handleUploadComplete = (result) => {
             onChange={(e) => setProduct({ ...product, title: e.target.value })}
             className="w-full border rounded p-2"
           />
-        </div>
+        </div> */}
 
-        <div>
-          <label htmlFor="class" className="block font-medium">Exam Link</label>
-          <input
-            type="text"
-            id="class"
-            value={product.link}
-            onChange={(e) => setProduct({ ...product, link: e.target.value })}
-            className="w-full border rounded p-2"
-          />
-        </div>
-
-
-        <div>
-          <label htmlFor="title" className="block font-medium">Exam Topic</label>
-          <input
-            type="text"
-            id="subject"
-            value={product.topic}
-            onChange={(e) => setProduct({ ...product, topic: e.target.value })}
-            className="w-full border rounded p-2"
-          />
-        </div>
-
+      
+        {/* <div>
+          <label htmlFor="title" className="block font-medium">Product Category</label>
+         
+          <select
+          value={product.category}
+          onChange={(e) => setProduct({ ...product, category: e.target.value })}
+          className="w-full p-2 border rounded"
+        >  
+          <option>Enter Category</option>
+          {
+            category.map(item=> (
+               <option key={item.name} value={item.name}>{item.name}</option>
+            ))
+          }
+          
+        </select>
+        </div> */}
          
 
         <button 
           type="submit"
           className="btn bg-teal-500 text-white px-6 py-2 rounded w-full"
         >
-          Submit Exam
+          Add Gallery
         </button>
       </form>
       <Toaster />
