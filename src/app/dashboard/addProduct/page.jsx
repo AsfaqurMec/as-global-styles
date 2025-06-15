@@ -1,13 +1,33 @@
-
 'use client';
 import Layout from '../../Components/Layout';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 import { CldUploadWidget } from "next-cloudinary";
 import Image from 'next/image';
+import axios from 'axios';
 
 
 const page = () => {
+
+  const [category, setCategory] = useState([]);
+
+  useEffect(() => {
+        const getData = async () => {
+          const { data } = await axios.get(
+            'http://localhost:3000/allProducts'
+          )
+          // console.log('datas',data);
+          setCategory(data.service)
+          
+          
+         
+        }
+        getData();
+  
+      }, []);
+
+      console.log('categories',category);
+      
 
   const [imageUrl, setImageUrl] = useState('');
 const [imageUrl1, setImageUrl1] = useState('');
@@ -22,27 +42,6 @@ const [imageUrl1, setImageUrl1] = useState('');
   const handleDebug = () => {
     console.log('Widget opened');
   };
-
-
-// const handleUploadComplete = (result) => {
-//   if (result?.event === 'success') {
-//     const uploadedUrl = result.info.secure_url;
-
-//     if (!product.image1) {
-//       setImageUrl(uploadedUrl);
-//       setProduct((prev) => ({ ...prev, image1: uploadedUrl }));
-//       toast.success('Image 1 uploaded successfully!');
-//     } else if (!product.image2) {
-//       setImageUrl1(uploadedUrl);
-//       setProduct((prev) => ({ ...prev, image2: uploadedUrl }));
-//       toast.success('Image 2 uploaded successfully!');
-//     } else {
-//       toast.error('Both image slots are already filled!');
-//     }
-//   } else {
-//     toast.error('Image upload failed or canceled.');
-//   }
-// };
 
 const handleUploadComplete = (result) => {
   if (result?.event === 'success') {
@@ -121,29 +120,7 @@ const handleUploadComplete = (result) => {
           />
         </div>
 
-        {/* <div>
-          <label htmlFor="class" className="block font-medium">Exam Link</label>
-          <input
-            type="text"
-            id="class"
-            value={product.link}
-            onChange={(e) => setProduct({ ...product, link: e.target.value })}
-            className="w-full border rounded p-2"
-          />
-        </div> */}
-
-
-        {/* <div>
-          <label htmlFor="title" className="block font-medium">Product Category</label>
-          <input
-            type="text"
-            id="subject"
-            value={product.topic}
-            onChange={(e) => setProduct({ ...product, topic: e.target.value })}
-            className="w-full border rounded p-2"
-          />
-        </div> */}
-
+      
         <div>
           <label htmlFor="title" className="block font-medium">Product Category</label>
          
@@ -153,11 +130,12 @@ const handleUploadComplete = (result) => {
           className="w-full p-2 border rounded"
         >  
           <option>Enter Category</option>
-          <option value={'Physics'}>Physics</option>
-         
-          <option value={'English'}>English</option>
-          <option value={'Chemistry'}>Chemistry</option>
-          <option value={'HigherMath'}>Higher Math</option>
+          {
+            category.map(item=> (
+               <option key={item.name} value={item.name}>{item.name}</option>
+            ))
+          }
+          
         </select>
         </div>
          

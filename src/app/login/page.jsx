@@ -18,6 +18,8 @@ const Page = () => {
     event.preventDefault();
     const email = event.target.email.value;
     const password = event.target.password.value;
+    //console.log(email, password);
+    
     const resp = await signIn("credentials", {
       email,
       password,
