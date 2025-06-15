@@ -21,19 +21,28 @@ const page = () => {
           setCategory(data?.service)
          
         }
-     const getProducts = async () => {
-         const { data } = await axios.get(
-            'http://localhost:3000/allProducts'
-          )
-          // console.log('datas',data);
-          setProducts(data?.service)
-     }
+    //  const getProducts = async () => {
+    //      const { data } = await axios.get(
+    //         'http://localhost:3000/allProducts'
+    //       )
+    //       // console.log('datas',data);
+    //       setProducts(data?.service)
+    //  }
         getData();
-        getProducts();
+        fetchData();
   
       }, []);
 
-     // console.log('categories',category);
+     const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/allProducts");
+      if (response.data) {
+        setProducts(response.data.service);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
       
 
   const [imageUrl, setImageUrl] = useState('');
@@ -81,6 +90,35 @@ const handleUploadComplete = (result) => {
       toast.error("Something went Wrong");
     }
   };
+
+const handleDelete = async (id)=> {
+
+           // const status = 'block';
+          
+          try {
+            const collection = 'products';
+            const response = await fetch("/delete/", {
+              method: "POST",
+              body: JSON.stringify({
+                 id, collection
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+        
+            if (response.ok) {
+              toast.success("Products deleted successfully!");
+              await fetchData();
+            } else {
+              alert("Failed to delete user.");
+            }
+          } catch (error) {
+            console.error("Error updating user status:", error);
+          }
+      
+          }
+
 
   return (
     <Layout>

@@ -13,7 +13,7 @@ const Sidebar = () => {
           <Link href="/dashboard/addCategory">Add Category</Link>
         </li>
         <li className="p-4 hover:bg-gray-700">
-          <Link href="/dashboard/addProduct">Add Item</Link>
+          <Link href="/dashboard/addProduct">Add Products</Link>
         </li>
         <li className="p-4 hover:bg-gray-700">
           <Link href="/dashboard/gallery">Add Gallery</Link>
