@@ -14,7 +14,7 @@ const page = () => {
   useEffect(() => {
         const getData = async () => {
           const { data } = await axios.get(
-            'http://localhost:3000/allProducts'
+            'http://localhost:3000/allGallery'
           )
           // console.log('datas',data);
           setCategory(data.service)
@@ -107,36 +107,7 @@ const handleUploadComplete = (result) => {
 
 </div>
         </div>
-        
-        {/* <div>
-          <label htmlFor="title" className="block font-medium">Product Title</label>
-          <input
-            type="text"
-            id="title"
-            value={product.title}
-            onChange={(e) => setProduct({ ...product, title: e.target.value })}
-            className="w-full border rounded p-2"
-          />
-        </div> */}
-
-      
-        {/* <div>
-          <label htmlFor="title" className="block font-medium">Product Category</label>
-         
-          <select
-          value={product.category}
-          onChange={(e) => setProduct({ ...product, category: e.target.value })}
-          className="w-full p-2 border rounded"
-        >  
-          <option>Enter Category</option>
-          {
-            category.map(item=> (
-               <option key={item.name} value={item.name}>{item.name}</option>
-            ))
-          }
-          
-        </select>
-        </div> */}
+     
          
 
         <button 
@@ -146,6 +117,57 @@ const handleUploadComplete = (result) => {
           Add Gallery
         </button>
       </form>
+
+      {/* All gallery Table  */}
+
+    <>
+<h1 className="text-center text-green-700 text-3xl font-semibold mt-10 mb-6">All Gallery</h1>
+<div className="overflow-x-auto min-h-[46vh]">
+    <table className="table rounded-none bg-[#e6e6e6c1]">
+        {/* head */}
+        <thead>
+            <tr>
+            <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Sl No.</th>
+                <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Image</th>
+                
+                
+                <th className="px-[5px] md:px-2 text-stone-950 text-lg font-bold">Action</th>
+               
+            </tr>
+      
+      </thead>
+
+        <tbody>
+            {
+             category.map((user, index )=> 
+                <tr key={user?._id}>
+                <td className="px-[5px] md:px-2 font-bold text-lg">{index+1}</td>
+                <td className="px-[5px] md:px-2 font-bold text-lg"><img className="w-20 h-20" src={user?.image} alt="" /></td>
+                
+                
+                
+                
+                <td className="flex  gap-1 flex-row">
+                
+                  
+                 { user?.role === 'admin' ? "" : 
+                      <button onClick={()=>handleDelete(user?._id)}
+                      className="btn md:mr-2 btn-info">Delete</button>
+                 }
+              
+
+                </td>
+
+            </tr>
+              )
+          }
+        </tbody>  
+    </table>
+
+    <h1 className='my-3 text-2xl font-semibold'>Total : {category?.length}</h1>
+</div>
+</>
+
       <Toaster />
     </Layout>
   );
