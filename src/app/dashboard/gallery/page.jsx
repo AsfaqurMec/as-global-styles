@@ -12,21 +12,32 @@ const page = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-        const getData = async () => {
-          const { data } = await axios.get(
-            'http://localhost:3000/allGallery'
-          )
-          // console.log('datas',data);
-          setCategory(data.service)
+        // const getData = async () => {
+        //   const { data } = await axios.get(
+        //     'http://localhost:3000/allGallery'
+        //   )
+        //   // console.log('datas',data);
+        //   setCategory(data.service)
           
           
          
-        }
-        getData();
+        // }
+        fetchData();
   
       }, []);
 
-      console.log('categories',category);
+      const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:3000/allGallery");
+      if (response.data) {
+        setCategory(response.data.service);
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    }
+  };
+
+    //  console.log('categories',category);
       
 
   const [imageUrl, setImageUrl] = useState('');
@@ -68,11 +79,41 @@ const handleUploadComplete = (result) => {
     if (resp.status === 200) {
       toast.success("Gallery Added Successfully");
       setProduct({ ...product, image:'' })
+       await fetchData();
       
     } else {
       toast.error("Something went Wrong");
     }
   };
+
+   const handleDelete = async (id)=> {
+
+           // const status = 'block';
+          
+          try {
+            const collection = 'gallery';
+            const response = await fetch("/delete/", {
+              method: "POST",
+              body: JSON.stringify({
+                 id, collection
+              }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            });
+        
+            if (response.ok) {
+              toast.success("Gallery deleted successfully!");
+              await fetchData();
+            } else {
+              alert("Failed to delete user.");
+            }
+          } catch (error) {
+            console.error("Error updating user status:", error);
+          }
+      
+          }
+
 
   return (
     <Layout>
