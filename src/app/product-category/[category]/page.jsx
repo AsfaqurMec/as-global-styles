@@ -43,7 +43,7 @@ export default function CategoryPage() {
                  <div key={product._id} className="card w-full rounded-none bg-base-100 relative mb-8 shadow-2xl p-2">
       <Zoom>
         <img
-          className="w-full h-[220px] "
+          className="w-full h-[250px] "
           src={product?.image}
           alt="image"
         />

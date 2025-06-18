@@ -17,10 +17,27 @@ import { IoLogoYoutube } from "react-icons/io5";
 import { IoCall } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaChevronDown } from "react-icons/fa";
+import axios from "axios";
 
 
 
 const Navbar = () => {
+  const [category, setCategory] = useState([]);
+   useEffect(() => {
+           const getData = async () => {
+             const { data } = await axios.get(
+               'http://localhost:3000/allCategory'
+             )
+             // console.log('datas',data);
+             setCategory(data?.service)
+            
+           }
+      
+           getData();
+           
+     
+         }, []);
+
 
   const drawerRef = useRef(null);
 
@@ -162,9 +179,12 @@ const Navbar = () => {
                         <div className="dropdown dropdown-hover ">
   <div tabIndex={0} role="button" className="flex gap-2 items-center">Products <FaChevronDown className="mt-1"/></div>
   <ul tabIndex={0} className="dropdown-content menu bg-white rounded-box z-1 w-52 p-2 shadow-sm">
-    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Men</li>
+    {category.map(category =>(
+      <Link key={category._id} href={`/product-category/${category.name}`}><li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">{category.name}</li></Link>
+    ))}
+    {/* <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Men</li>
     <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Women</li>
-    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Kids</li>
+    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Kids</li> */}
   </ul>
 </div>
                       </Link>

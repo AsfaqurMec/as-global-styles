@@ -13,14 +13,7 @@ const page = () => {
   const [category, setCategory] = useState([]);
 
    useEffect(() => {
-  //       const getData = async () => {
-  //         const { data } = await axios.get(
-  //           'http://localhost:3000/allCategory'
-  //         )
-  //         // console.log('datas',data);
-  //         setCategory(data.service)
-         
-  //       }
+  
         fetchData();
   
       }, []);
@@ -76,6 +69,7 @@ const [imageUrl1, setImageUrl1] = useState('');
     if (resp.status === 200) {
       toast.success("Category Added Successfully");
        setProduct({ ...product, image: '', title: '', name: ''})
+       fetchData();
     } else {
       toast.error("Something went Wrong");
     }
@@ -172,7 +166,7 @@ const [imageUrl1, setImageUrl1] = useState('');
           type="submit"
           className="btn bg-teal-500 text-white px-6 py-2 rounded w-full"
         >
-          Submit Class
+          Create Category
         </button>
       </form>
 
@@ -208,10 +202,7 @@ const [imageUrl1, setImageUrl1] = useState('');
                 <td className="flex  gap-1 flex-row">
                 
                  
-                 { user?.role === 'admin' ? "" :  
-                   <button onClick={()=>handleBlock(user?.id)}
-                        className="btn md:mr-2 btn-info">Edit</button>
-                }
+                 
                   
 
                  { user?.role === 'admin' ? "" : 
