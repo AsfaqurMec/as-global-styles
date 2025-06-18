@@ -117,13 +117,21 @@ const Navbar = () => {
             </div>
           </Link>
 
-          <Link href="/products" onClick={closeDrawer}>
-            <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
+          <div className="collapse collapse-arrow shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
+  <input type="checkbox" />
+  <div className="collapse-title text-xl font-medium p-0 py-2">Products</div>
+  <div className="collapse-content text-lg">
+    {category.map(category =>(
+      <Link key={category._id} href={`/product-category/${category.name}`}><h1 className="pb-3 hover:bg-black pl-2 rounded-md">{category.name}</h1></Link>
+    ))}
+  </div>
+</div>
+            {/* <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
               <div className=" text-xl font-medium py-3">
                 <h1>Products</h1>
               </div>
-            </div>
-          </Link>
+            </div> */}
+          
 
           <Link href="/contact-us" onClick={closeDrawer}>
             <div className="shadow-none border-b-2 shadow-blue-100 rounded-none text-white hover:text-blue-200">
@@ -182,9 +190,7 @@ const Navbar = () => {
     {category.map(category =>(
       <Link key={category._id} href={`/product-category/${category.name}`}><li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">{category.name}</li></Link>
     ))}
-    {/* <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Men</li>
-    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Women</li>
-    <li className="pb-3 hover:bg-gray-100 pl-2 rounded-md">Kids</li> */}
+    
   </ul>
 </div>
                       </Link>
