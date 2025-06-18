@@ -28,8 +28,8 @@ const Home = () => {
       AOS.init({});
   }, [])
 
-     const men = 'men';
-     const women = 'women';
+     const Men = 'Men';
+     const Women = 'Women';
      const hoodie = 'hoodie';
      const denim = 'denim';
      const jacket = 'jacket';
@@ -97,7 +97,7 @@ const Home = () => {
            <h1 className='text-5xl md:text-6xl text-center font-medium pt-10'>Our Products</h1>
           <div className='grid grid-cols-2 md:grid-cols-3 gap-3 px-5 md:px-20 py-10'>
             
-            <Link href={`/product-category/${men}`}>
+            <Link href={`/product-category/${Men}`}>
             <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 
                 <Image
@@ -119,7 +119,7 @@ const Home = () => {
               </div>
           </Link>
 
-          <Link href={`/product-category/${women}`}>
+          <Link href={`/product-category/${Women}`}>
                <div className="card h-[200px]  md:h-[330px] lg:h-72 w-full rounded-none bg-base-100 relative mb-8">
                 <Image
                   src={womens}

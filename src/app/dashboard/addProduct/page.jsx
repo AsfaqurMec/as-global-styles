@@ -11,6 +11,7 @@ const page = () => {
 
   const [category, setCategory] = useState([]);
   const [products, setProducts] = useState([]);
+  const [newdata, setNewdata] = useState([]);
 
   useEffect(() => {
         const getData = async () => {
@@ -91,7 +92,37 @@ const handleUploadComplete = (result) => {
     }
   };
 
-const handleDelete = async (id)=> {
+      
+      // const handleUpdate = async (id)=> {
+
+      //      // const status = 'block';
+          
+      //     try {
+           
+      //       const response = await fetch(`/product-data?id=${id}`, {
+      //         method: "GET",
+      //         headers: {
+      //           "Content-Type": "application/json",
+      //         },
+      //       });
+        
+      //         const data = await response.json();
+      //         //console.log(data);
+      //       setNewdata(data);
+      //       // if (response.ok) {
+      //       //   toast.success("Products deleted successfully!");
+      //       //   await fetchData();
+      //       // } else {
+      //       //   alert("Failed to delete user.");
+      //       // }
+      //     } catch (error) {
+      //       console.error("Error updating user status:", error);
+      //     }
+      
+      //     }
+
+
+      const handleDelete = async (id)=> {
 
            // const status = 'block';
           
@@ -122,7 +153,7 @@ const handleDelete = async (id)=> {
 
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-center mb-10">Add New Item</h1>
+      <h1 className="text-2xl font-bold text-center mb-10">Add New Product</h1>
       <form onSubmit={handleSubmit} action="" className="space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
         
       <div>
@@ -157,6 +188,7 @@ const handleDelete = async (id)=> {
         <div>
           <label htmlFor="title" className="block font-medium">Product Title</label>
           <input
+          
             type="text"
             id="title"
             value={product.title}
@@ -227,10 +259,101 @@ const handleDelete = async (id)=> {
                 <td className="flex  gap-1 flex-row">
                 
                  
-                 { user?.role === 'admin' ? "" :  
-                   <button onClick={()=>handleBlock(user?.id)}
-                        className="btn md:mr-2 btn-error">Edit</button>
-                }
+                 {/* { user?.role === 'admin' ? "" :  
+                 
+             <>
+                <button className="btn md:mr-2 btn-error" onClick={() => {
+    document.getElementById('my_modal_3').showModal();
+    handleUpdate(user?._id);
+  }}>Edit</button>
+                 
+
+                <dialog id="my_modal_3" className="modal">
+                <div className="modal-box">
+                  <form method="dialog">
+                   
+                    <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
+                  </form>
+                 
+                  <div>
+<form onSubmit={handleSubmit} action="" className="space-y-4 w-full mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
+        
+      <div>
+          <label htmlFor="image" className="block font-medium">Upload Product Image</label>
+          <CldUploadWidget 
+       cloudName={process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || "dzmglrehf"}
+      uploadPreset="electro"
+      onSuccess={(result) => handleUploadComplete(result)}
+      onWidgetOpen={handleDebug}
+      >
+  {({ open }) => {
+    return (
+      <button  type="button" className='btn bg-blue-500 rounded-md text-white' onClick={() => open()}>
+        Upload Image
+      </button>
+    );
+  }}
+</CldUploadWidget>
+ 
+ <div className='flex justify-start items-center gap-10'>        
+{newdata.image && (
+  <div className="flex gap-3 flex-col">
+    <h2>Uploaded Image:</h2>
+    <Image src={newdata.image} alt='image' width={60} height={40}>
+    </Image>
+  </div>
+)} 
+
+</div>
+        </div>
+        
+        <div>
+          <label htmlFor="title" className="block font-medium">Product Title</label>
+          <input
+            defaultValue={newdata?.title}
+            type="text"
+            id="title"
+            value={product.title}
+            onChange={(e) => setProduct({ ...product, title: e.target.value })}
+            className="w-full border rounded p-2"
+          />
+        </div>
+
+      
+        <div>
+          <label htmlFor="title" className="block font-medium">Product Category</label>
+         
+          <select
+          defaultValue={newdata?.category}
+          value={product.category}
+          onChange={(e) => setProduct({ ...product, category: e.target.value })}
+          className="w-full p-2 border rounded"
+        >  
+          <option>Enter Category</option>
+          {
+            category.map(item=> (
+               <option key={item.name} value={item.name}>{item.name}</option>
+            ))
+          }
+          
+        </select>
+        </div>
+         
+
+        <button 
+          type="submit"
+          className="btn bg-teal-500 text-white px-6 py-2 rounded w-full"
+        >
+          Add Product
+        </button>
+      </form>
+                  </div>
+
+                </div>
+              </dialog>
+            </>
+
+                } */}
                   
 
                  { user?.role === 'admin' ? "" : 
